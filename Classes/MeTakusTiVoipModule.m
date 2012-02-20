@@ -14,7 +14,7 @@
 
 @implementation MeTakusTiVoipModule
 
-@synthesize input;
+@synthesize output;
 
 #pragma mark Internal
 
@@ -58,8 +58,8 @@
 
 -(void)dealloc
 {
-    [input release];
-    input = nil;
+    [output release];
+    output = nil;
     
 	// release any resources that have been retained by the module
 	[super dealloc];
@@ -133,13 +133,13 @@
         return;
     }    
     
-    if(input == nil) {
-        self.input = [[VoiceInput alloc] init];
+    if(output == nil) {
+        self.output = [[Voiceoutput alloc] init];
             
-        [input setDstHost:dstHost];
-        [input setDstPort:dstPort];
+        [output setDstHost:dstHost];
+        [output setDstPort:dstPort];
            
-        [input start];
+        [output start];
     }
 
 }
@@ -148,10 +148,10 @@
 {    
     NSLog(@"[INFO] stop");
     
-    if (input != nil) {
-        [input stop];
-        [input release];
-        input = nil;
+    if (output != nil) {
+        [output stop];
+        [output release];
+        output = nil;
     }
 }
 

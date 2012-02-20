@@ -6,16 +6,16 @@
  * and licensed under the Apache Public License (version 2)
  */
 
-#import "VoiceInput.h"
+#import "VoiceOutput.h"
 
 #import "TiModule.h"
 
 @interface MeTakusTiVoipModule : TiModule
 {
-    VoiceInput *input;
+    VoiceOutput *output;
 }
 
-@property (retain)VoiceInput *input;
+@property (retain)VoiceOutput *output;
 
 -(id)create:(id)args;
 
