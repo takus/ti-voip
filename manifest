@@ -1,0 +1,18 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 0.1
+apiversion: 2
+description: Titanium Voice over IP Module
+author: Takumi SAKAMOTO
+license: Apache License 2.0
+copyright: Copyright (c) 2012 by SAKAMOTO Takumi
+
+
+# these should not be edited
+name: voip
+moduleid: me.takus.ti.voip
+guid: 8ab25eda-7b7e-4769-9f84-faa136abd1f1
+platform: iphone
+minsdk: 1.8.1

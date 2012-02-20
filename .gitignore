@@ -1,0 +1,14 @@
+.DS_Store
+.project
+
+tmp
+bin
+build
+dist
+
+*.zip
+*.swp
+*.orig
+
+voip.xcodeproj/xcuserdata/*
+voip.xcodeproj/project.xcworkspace/xcuserdata/*
