@@ -1,15 +1,20 @@
 /**
- * Your Copyright Here
+ * 2012 Takumi SAKAMOTO <takumi.saka@gmail.com> All rights reserved.
+ * License: Apache License 2.0
  *
  * Appcelerator Titanium is Copyright (c) 2009-2010 by Appcelerator, Inc.
  * and licensed under the Apache Public License (version 2)
  */
+
 #import "MeTakusTiVoipModule.h"
+
 #import "TiBase.h"
 #import "TiHost.h"
 #import "TiUtils.h"
 
 @implementation MeTakusTiVoipModule
+
+@synthesize input;
 
 #pragma mark Internal
 
@@ -34,6 +39,9 @@
 	[super startup];
 	
 	NSLog(@"[INFO] %@ loaded",self);
+    
+    AudioSessionInitialize(NULL, NULL, NULL, NULL);
+    AudioSessionSetActive(YES);
 }
 
 -(void)shutdown:(id)sender
@@ -50,6 +58,9 @@
 
 -(void)dealloc
 {
+    [input release];
+    input = nil;
+    
 	// release any resources that have been retained by the module
 	[super dealloc];
 }
@@ -84,23 +95,64 @@
 	}
 }
 
+-(void)audioSesstionToPlayAndRecord
+{
+    UInt32 sessionCategory = kAudioSessionCategory_PlayAndRecord;
+    AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, 
+                            sizeof (sessionCategory), 
+                            &sessionCategory);
+}
+
 #pragma Public APIs
 
--(id)example:(id)args
+-(id)create:(id)args
 {
-	// example method
-	return @"hello world";
+    self = [super init];
+    if(self != nil){
+        [self audioSesstionToPlayAndRecord];
+    }
+    return self;
 }
 
--(id)exampleProp
-{
-	// example property getter
-	return @"hello world";
+-(void)start:(id)args
+{    
+    NSLog(@"[INFO] start");
+    
+    NSString *dstHost = [TiUtils stringValue:[args objectAtIndex: 0]];
+    NSInteger dstPort = [TiUtils intValue:   [args objectAtIndex: 1]];
+    
+    if ([dstHost length] == 0)
+    {
+        NSLog(@"[ERROR] Address required");
+        return;
+    }
+        
+    if (dstPort <= 0 || dstPort > 65535)
+    {
+        NSLog(@"[ERROR] Valid port required");
+        return;
+    }    
+    
+    if(input == nil) {
+        self.input = [[VoiceInput alloc] init];
+            
+        [input setDstHost:dstHost];
+        [input setDstPort:dstPort];
+           
+        [input start];
+    }
+
 }
 
--(void)setExampleProp:(id)value
-{
-	// example property setter
+-(void)stop:(id)args
+{    
+    NSLog(@"[INFO] stop");
+    
+    if (input != nil) {
+        [input stop];
+        [input release];
+        input = nil;
+    }
 }
 
 @end

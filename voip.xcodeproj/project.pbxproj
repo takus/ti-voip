@@ -22,6 +22,13 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		105A19B614F2E240009F89E6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 105A19B514F2E240009F89E6 /* AudioToolbox.framework */; };
+		105A19B814F2E258009F89E6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 105A19B714F2E258009F89E6 /* CFNetwork.framework */; };
+		105A19BA14F2E260009F89E6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 105A19B914F2E260009F89E6 /* UIKit.framework */; };
+		10FBA1A614F2DBC9004868C8 /* VoiceInput.h in Headers */ = {isa = PBXBuildFile; fileRef = 10FBA1A414F2DBC9004868C8 /* VoiceInput.h */; };
+		10FBA1A714F2DBC9004868C8 /* VoiceInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FBA1A514F2DBC9004868C8 /* VoiceInput.m */; };
+		10FBA1AB14F2DC38004868C8 /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 10FBA1A914F2DC37004868C8 /* GCDAsyncUdpSocket.h */; };
+		10FBA1AC14F2DC38004868C8 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FBA1AA14F2DC37004868C8 /* GCDAsyncUdpSocket.m */; };
 		24DD6CF91134B3F500162E58 /* MeTakusTiVoipModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DD6CF71134B3F500162E58 /* MeTakusTiVoipModule.h */; };
 		24DD6CFA1134B3F500162E58 /* MeTakusTiVoipModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* MeTakusTiVoipModule.m */; };
 		24DE9E1111C5FE74003F90F6 /* MeTakusTiVoipModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* MeTakusTiVoipModuleAssets.h */; };
@@ -36,19 +43,26 @@
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "voip";
+			remoteInfo = voip;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		24DD6CF71134B3F500162E58 /* MeTakusTiVoipModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MeTakusTiVoipModule.h"; path = "Classes/MeTakusTiVoipModule.h"; sourceTree = "<group>"; };
-		24DD6CF81134B3F500162E58 /* MeTakusTiVoipModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MeTakusTiVoipModule.m"; path = "Classes/MeTakusTiVoipModule.m"; sourceTree = "<group>"; };
+		105A19B514F2E240009F89E6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		105A19B714F2E258009F89E6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		105A19B914F2E260009F89E6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		10FBA1A414F2DBC9004868C8 /* VoiceInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoiceInput.h; path = Classes/VoiceInput.h; sourceTree = "<group>"; };
+		10FBA1A514F2DBC9004868C8 /* VoiceInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VoiceInput.m; path = Classes/VoiceInput.m; sourceTree = "<group>"; };
+		10FBA1A914F2DC37004868C8 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncUdpSocket.h; path = Classes/GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		10FBA1AA14F2DC37004868C8 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncUdpSocket.m; path = Classes/GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		24DD6CF71134B3F500162E58 /* MeTakusTiVoipModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeTakusTiVoipModule.h; path = Classes/MeTakusTiVoipModule.h; sourceTree = "<group>"; };
+		24DD6CF81134B3F500162E58 /* MeTakusTiVoipModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeTakusTiVoipModule.m; path = Classes/MeTakusTiVoipModule.m; sourceTree = "<group>"; };
 		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
-		24DE9E0F11C5FE74003F90F6 /* MeTakusTiVoipModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MeTakusTiVoipModuleAssets.h"; path = "Classes/MeTakusTiVoipModuleAssets.h"; sourceTree = "<group>"; };
-		24DE9E1011C5FE74003F90F6 /* MeTakusTiVoipModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MeTakusTiVoipModuleAssets.m"; path = "Classes/MeTakusTiVoipModuleAssets.m"; sourceTree = "<group>"; };
-		AA747D9E0F9514B9006C5449 /* MeTakusTiVoip_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MeTakusTiVoip_Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		24DE9E0F11C5FE74003F90F6 /* MeTakusTiVoipModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeTakusTiVoipModuleAssets.h; path = Classes/MeTakusTiVoipModuleAssets.h; sourceTree = "<group>"; };
+		24DE9E1011C5FE74003F90F6 /* MeTakusTiVoipModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeTakusTiVoipModuleAssets.m; path = Classes/MeTakusTiVoipModuleAssets.m; sourceTree = "<group>"; };
+		AA747D9E0F9514B9006C5449 /* MeTakusTiVoip_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeTakusTiVoip_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D2AAC07E0554694100DB518D /* libMeTakusTiVoip.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libMeTakusTiVoip.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2AAC07E0554694100DB518D /* libMeTakusTiVoip.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMeTakusTiVoip.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +70,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				105A19BA14F2E260009F89E6 /* UIKit.framework in Frameworks */,
+				105A19B814F2E258009F89E6 /* CFNetwork.framework in Frameworks */,
+				105A19B614F2E240009F89E6 /* AudioToolbox.framework in Frameworks */,
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,12 +96,15 @@
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
-			name = "voip";
+			name = voip;
 			sourceTree = "<group>";
 		};
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				105A19B914F2E260009F89E6 /* UIKit.framework */,
+				105A19B714F2E258009F89E6 /* CFNetwork.framework */,
+				105A19B514F2E240009F89E6 /* AudioToolbox.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -97,6 +117,10 @@
 				24DE9E1011C5FE74003F90F6 /* MeTakusTiVoipModuleAssets.m */,
 				24DD6CF71134B3F500162E58 /* MeTakusTiVoipModule.h */,
 				24DD6CF81134B3F500162E58 /* MeTakusTiVoipModule.m */,
+				10FBA1A414F2DBC9004868C8 /* VoiceInput.h */,
+				10FBA1A514F2DBC9004868C8 /* VoiceInput.m */,
+				10FBA1A914F2DC37004868C8 /* GCDAsyncUdpSocket.h */,
+				10FBA1AA14F2DC37004868C8 /* GCDAsyncUdpSocket.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -120,6 +144,8 @@
 				AA747D9F0F9514B9006C5449 /* MeTakusTiVoip_Prefix.pch in Headers */,
 				24DD6CF91134B3F500162E58 /* MeTakusTiVoipModule.h in Headers */,
 				24DE9E1111C5FE74003F90F6 /* MeTakusTiVoipModuleAssets.h in Headers */,
+				10FBA1A614F2DBC9004868C8 /* VoiceInput.h in Headers */,
+				10FBA1AB14F2DC38004868C8 /* GCDAsyncUdpSocket.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +164,8 @@
 			);
 			dependencies = (
 			);
-			name = "voip";
-			productName = "voip";
+			name = voip;
+			productName = voip;
 			productReference = D2AAC07E0554694100DB518D /* libMeTakusTiVoip.a */;
 			productType = "com.apple.product-type.library.static";
 		};
@@ -192,6 +218,8 @@
 			files = (
 				24DD6CFA1134B3F500162E58 /* MeTakusTiVoipModule.m in Sources */,
 				24DE9E1211C5FE74003F90F6 /* MeTakusTiVoipModuleAssets.m in Sources */,
+				10FBA1A714F2DBC9004868C8 /* VoiceInput.m in Sources */,
+				10FBA1AC14F2DC38004868C8 /* GCDAsyncUdpSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +249,11 @@
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DSTROOT = /tmp/MeTakusTiVoip.dst;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MeTakusTiVoip_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_VERSION = "";
@@ -233,22 +265,18 @@
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MeTakusTiVoip_Prefix.pch";
+				INSTALL_PATH = /usr/local/lib;
 				OTHER_CFLAGS = (
 					"-DDEBUG",
 					"-DTI_POST_1_2",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = MeTakusTiVoip;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
-				DSTROOT = "/tmp/MeTakusTiVoip.dst";
-				INSTALL_PATH = /usr/local/lib;
-				PRODUCT_NAME = "MeTakusTiVoip";
 			};
 			name = Debug;
 		};
@@ -256,6 +284,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = (
 					armv6,
 					armv7,
@@ -265,7 +294,11 @@
 					armv7,
 				);
 				"ARCHS[sdk=iphonesimulator*]" = i386;
+				DSTROOT = /tmp/MeTakusTiVoip.dst;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MeTakusTiVoip_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_VERSION = "";
@@ -277,21 +310,14 @@
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MeTakusTiVoip_Prefix.pch";
+				INSTALL_PATH = /usr/local/lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DTI_POST_1_2";
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PRODUCT_NAME = MeTakusTiVoip;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DSTROOT = "/tmp/MeTakusTiVoip.dst";
-				INSTALL_PATH = /usr/local/lib;
-				PRODUCT_NAME = "MeTakusTiVoip";
 			};
 			name = Release;
 		};
@@ -310,7 +336,11 @@
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DSTROOT = /tmp/MeTakusTiVoip.dst;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MeTakusTiVoip_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_VERSION = "";
@@ -322,22 +352,18 @@
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MeTakusTiVoip_Prefix.pch";
+				INSTALL_PATH = /usr/local/lib;
 				OTHER_CFLAGS = (
 					"-DDEBUG",
 					"-DTI_POST_1_2",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = MeTakusTiVoip;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
-				DSTROOT = "/tmp/MeTakusTiVoip.dst";
-				INSTALL_PATH = /usr/local/lib;
-				PRODUCT_NAME = "MeTakusTiVoip";
 			};
 			name = Debug;
 		};
@@ -345,6 +371,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = (
 					armv6,
 					armv7,
@@ -354,7 +381,11 @@
 					armv7,
 				);
 				"ARCHS[sdk=iphonesimulator*]" = i386;
+				DSTROOT = /tmp/MeTakusTiVoip.dst;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MeTakusTiVoip_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_VERSION = "";
@@ -366,21 +397,14 @@
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MeTakusTiVoip_Prefix.pch";
+				INSTALL_PATH = /usr/local/lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DTI_POST_1_2";
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PRODUCT_NAME = MeTakusTiVoip;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DSTROOT = "/tmp/MeTakusTiVoip.dst";
-				INSTALL_PATH = /usr/local/lib;
-				PRODUCT_NAME = "MeTakusTiVoip";
 			};
 			name = Release;
 		};
