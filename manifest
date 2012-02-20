@@ -1,14 +1,9 @@
-#
-# this is your module manifest and used by Titanium
-# during compilation, packaging, distribution, etc.
-#
 version: 0.1
 apiversion: 2
 description: Titanium Voice over IP Module
 author: Takumi SAKAMOTO
 license: Apache License 2.0
-copyright: Copyright (c) 2012 by SAKAMOTO Takumi
-
+copyright: Copyright (c) 2012 by Takumi SAKAMOTO 
 
 # these should not be edited
 name: voip
