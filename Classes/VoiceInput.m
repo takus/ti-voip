@@ -27,7 +27,7 @@ static void inputCallback(void *                               inUserData,
 {
     NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
     
-    VoiceInput *input =(VoiceOutput *)inUserData;
+    VoiceInput *input =(VoiceInput *)inUserData;
     
     NSUInteger length = inNumberPacketDescriptions;
     NSData *packet = [NSData dataWithBytes:inBuffer->mAudioData length:length];    
@@ -49,19 +49,19 @@ static void inputCallback(void *                               inUserData,
         self.socket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
         
         NSError *error = nil;
-        if (![socket bindToPort:0 error:&error])
+        if (![self.socket bindToPort:0 error:&error])
         {
             NSLog(@"[ERROR] Binding: %@", error);
             return;
         }
-        if (![socket beginReceiving:&error])
+        if (![self.socket beginReceiving:&error])
         {
             NSLog(@"[ERROR] Receiving: %@", error);
             return;
         }
         tag = 0;
         
-        NSLog(@"[INFO] new VoiceOutput:%@", self);
+        NSLog(@" new VoiceInput:%@", self);
         
         [self prepareAudioQueue];
     }
@@ -71,10 +71,10 @@ static void inputCallback(void *                               inUserData,
 
 -(void)dealloc
 {
-    NSLog(@"[INFO] dealloc VoiceOutput");
+    NSLog(@" dealloc VoiceInput");
     
-    [socket close];
-    [socket release];
+    [self.socket close];
+    [self.socket release];
     
 	[super dealloc];
 }
@@ -93,7 +93,7 @@ static void inputCallback(void *                               inUserData,
     audioFormat.mBitsPerChannel		= 16;
     audioFormat.mReserved			= 0;
     
-    AudioQueueNewoutput(&audioFormat, 
+    AudioQueueNewInput(&audioFormat, 
                        inputCallback, 
                        self, 
                        NULL, 

@@ -15,6 +15,7 @@
 @implementation MeTakusTiVoipModule
 
 @synthesize input;
+@synthesize output;
 
 #pragma mark Internal
 
@@ -58,8 +59,11 @@
 
 -(void)dealloc
 {
-    [input release];
-    input = nil;
+    [self.input release];
+    self.input = nil;
+    
+    [self.output release];
+    self.output = nil;
     
 	// release any resources that have been retained by the module
 	[super dealloc];
@@ -120,6 +124,7 @@
     
     NSString *dstHost = [TiUtils stringValue:[args objectAtIndex: 0]];
     NSInteger dstPort = [TiUtils intValue:   [args objectAtIndex: 1]];
+    NSInteger srcPort = [TiUtils intValue:   [args objectAtIndex: 2]];
     
     if ([dstHost length] == 0)
     {
@@ -133,13 +138,23 @@
         return;
     }    
     
-    if(input == nil) {
+    if(self.input == nil)
+    {
         self.input = [[VoiceInput alloc] init];
             
-        [input setDstHost:dstHost];
-        [input setDstPort:dstPort];
+        [self.input setDstHost:dstHost];
+        [self.input setDstPort:dstPort];
            
-        [input start];
+        [self.input start];
+    }
+    
+    if(self.output == nil)
+    {
+        self.output = [[VoiceOutput alloc] init];
+        
+        [self.output bind:srcPort];
+        
+        [self.output start];
     }
 
 }
@@ -148,10 +163,18 @@
 {    
     NSLog(@"[INFO] VoIP stop");
     
-    if (input != nil) {
-        [input stop];
-        [input release];
-        input = nil;
+    if (self.input != nil)
+    {
+        [self.input stop];
+        [self.input release];
+        self.input = nil;
+    }
+    
+    if (self.output != nil)
+    {
+        [self.output stop];
+        [self.output release];
+        self.output = nil;
     }
 }
 
