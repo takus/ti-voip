@@ -25,8 +25,8 @@
 		105A19B614F2E240009F89E6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 105A19B514F2E240009F89E6 /* AudioToolbox.framework */; };
 		105A19B814F2E258009F89E6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 105A19B714F2E258009F89E6 /* CFNetwork.framework */; };
 		105A19BA14F2E260009F89E6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 105A19B914F2E260009F89E6 /* UIKit.framework */; };
-		10FBA1A614F2DBC9004868C8 /* VoiceOutput.h in Headers */ = {isa = PBXBuildFile; fileRef = 10FBA1A414F2DBC9004868C8 /* VoiceOutput.h */; };
-		10FBA1A714F2DBC9004868C8 /* VoiceOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FBA1A514F2DBC9004868C8 /* VoiceOutput.m */; };
+		10FBA1A614F2DBC9004868C8 /* VoiceInput.h in Headers */ = {isa = PBXBuildFile; fileRef = 10FBA1A414F2DBC9004868C8 /* VoiceInput.h */; };
+		10FBA1A714F2DBC9004868C8 /* VoiceInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FBA1A514F2DBC9004868C8 /* VoiceInput.m */; };
 		10FBA1AB14F2DC38004868C8 /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 10FBA1A914F2DC37004868C8 /* GCDAsyncUdpSocket.h */; };
 		10FBA1AC14F2DC38004868C8 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FBA1AA14F2DC37004868C8 /* GCDAsyncUdpSocket.m */; };
 		24DD6CF91134B3F500162E58 /* MeTakusTiVoipModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DD6CF71134B3F500162E58 /* MeTakusTiVoipModule.h */; };
@@ -51,8 +51,8 @@
 		105A19B514F2E240009F89E6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		105A19B714F2E258009F89E6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		105A19B914F2E260009F89E6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		10FBA1A414F2DBC9004868C8 /* VoiceOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoiceOutput.h; path = Classes/VoiceOutput.h; sourceTree = "<group>"; };
-		10FBA1A514F2DBC9004868C8 /* VoiceOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VoiceOutput.m; path = Classes/VoiceOutput.m; sourceTree = "<group>"; };
+		10FBA1A414F2DBC9004868C8 /* VoiceInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoiceInput.h; path = Classes/VoiceInput.h; sourceTree = "<group>"; };
+		10FBA1A514F2DBC9004868C8 /* VoiceInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VoiceInput.m; path = Classes/VoiceInput.m; sourceTree = "<group>"; };
 		10FBA1A914F2DC37004868C8 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncUdpSocket.h; path = Classes/GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
 		10FBA1AA14F2DC37004868C8 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncUdpSocket.m; path = Classes/GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
 		24DD6CF71134B3F500162E58 /* MeTakusTiVoipModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeTakusTiVoipModule.h; path = Classes/MeTakusTiVoipModule.h; sourceTree = "<group>"; };
@@ -117,8 +117,8 @@
 				24DE9E1011C5FE74003F90F6 /* MeTakusTiVoipModuleAssets.m */,
 				24DD6CF71134B3F500162E58 /* MeTakusTiVoipModule.h */,
 				24DD6CF81134B3F500162E58 /* MeTakusTiVoipModule.m */,
-				10FBA1A414F2DBC9004868C8 /* VoiceOutput.h */,
-				10FBA1A514F2DBC9004868C8 /* VoiceOutput.m */,
+				10FBA1A414F2DBC9004868C8 /* VoiceInput.h */,
+				10FBA1A514F2DBC9004868C8 /* VoiceInput.m */,
 				10FBA1A914F2DC37004868C8 /* GCDAsyncUdpSocket.h */,
 				10FBA1AA14F2DC37004868C8 /* GCDAsyncUdpSocket.m */,
 			);
@@ -144,7 +144,7 @@
 				AA747D9F0F9514B9006C5449 /* MeTakusTiVoip_Prefix.pch in Headers */,
 				24DD6CF91134B3F500162E58 /* MeTakusTiVoipModule.h in Headers */,
 				24DE9E1111C5FE74003F90F6 /* MeTakusTiVoipModuleAssets.h in Headers */,
-				10FBA1A614F2DBC9004868C8 /* VoiceOutput.h in Headers */,
+				10FBA1A614F2DBC9004868C8 /* VoiceInput.h in Headers */,
 				10FBA1AB14F2DC38004868C8 /* GCDAsyncUdpSocket.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,7 +218,7 @@
 			files = (
 				24DD6CFA1134B3F500162E58 /* MeTakusTiVoipModule.m in Sources */,
 				24DE9E1211C5FE74003F90F6 /* MeTakusTiVoipModuleAssets.m in Sources */,
-				10FBA1A714F2DBC9004868C8 /* VoiceOutput.m in Sources */,
+				10FBA1A714F2DBC9004868C8 /* VoiceInput.m in Sources */,
 				10FBA1AC14F2DC38004868C8 /* GCDAsyncUdpSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

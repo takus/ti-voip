@@ -6,9 +6,9 @@
  * and licensed under the Apache Public License (version 2)
  */
 
-#import "VoiceOutput.h"
+#import "VoiceInput.h"
 
-@implementation VoiceOutput
+@implementation VoiceInput
 
 @synthesize numPacketsToWrite;
 @synthesize startingPacketCount;
@@ -27,14 +27,14 @@ static void inputCallback(void *                               inUserData,
 {
     NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
     
-    VoiceOutput *output =(VoiceOutput *)inUserData;
+    VoiceInput *input =(VoiceOutput *)inUserData;
     
     NSUInteger length = inNumberPacketDescriptions;
     NSData *packet = [NSData dataWithBytes:inBuffer->mAudioData length:length];    
-    [output.socket sendData:packet toHost:output.dstHost port:output.dstPort 
-                  withTimeout:-1 tag:output.tag];
+    [input.socket sendData:packet toHost:input.dstHost port:input.dstPort 
+                  withTimeout:-1 tag:input.tag];
     
-    output.startingPacketCount += inNumberPacketDescriptions;
+    input.startingPacketCount += inNumberPacketDescriptions;
     
     AudioQueueEnqueueBuffer(inAQ, inBuffer, 0, NULL);
     

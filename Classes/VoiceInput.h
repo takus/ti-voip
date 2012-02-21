@@ -11,7 +11,7 @@
 
 #import "GCDAsyncUdpSocket.h"
 
-@interface VoiceOutput : NSObject 
+@interface VoiceInput : NSObject 
 {
     AudioQueueRef audioQueueObject;
     UInt32 numPacketsToWrite;
