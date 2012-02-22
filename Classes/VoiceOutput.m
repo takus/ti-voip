@@ -12,6 +12,8 @@
 
 @implementation VoiceOutput
 
+@synthesize queue;
+
 @synthesize socket;
 @synthesize tag;
 
@@ -21,6 +23,7 @@
     if(self != nil)
     {
         NSLog(@" new VoiceOutput:%@", self);
+        self.queue = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -47,6 +50,8 @@
 -(void)dealloc
 {
     NSLog(@" dealloc VoiceOutput");
+ 
+    [self.queue release];
     
     [self.socket close];
     [self.socket release];
@@ -56,20 +61,86 @@
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data fromAddress:(NSData *)address withFilterContext:(id)filterContext
 {
-    NSInteger size = [data length];
-    NSLog(@" didReceiveData: %d", size);
+    NSLog(@" didReceiveData %d", [self.queue count]);
+    
+    // write raw data to queue
+    id storeData = [[NSData alloc] initWithData:data];
+    [self.queue addObject:storeData];
     
     return YES;
 }
 
+static void outputCallback(void *                  inUserData,
+                           AudioQueueRef           inAQ,
+                           AudioQueueBufferRef     inBuffer)
+{
+    VoiceOutput *output = (VoiceOutput*)inUserData;
+    NSLog(@" outputCallback %d", [output.queue count]);
+    
+    int sleep = 0;
+    while ([output.queue count] == 0)
+    {
+        [NSThread sleepForTimeInterval:0.1];
+        sleep++;
+        NSLog(@" sleep %f times", sleep * 0.1);
+    }
+    
+    // copy first element of buffer to inBuffer
+    NSData *data = (NSData *)[output.queue objectAtIndex:0];
+    // TODO memcpy is not working correctly?
+    memcpy(inBuffer->mAudioData, data, [data length]);
+    [output.queue removeObjectAtIndex:0];
+    
+    inBuffer->mAudioDataByteSize = [data length];
+    
+    // enqueue inBuffer
+    AudioQueueEnqueueBuffer(inAQ, inBuffer, 0, NULL);
+}
+
+-(void)prepareAudioQueue{
+    AudioStreamBasicDescription audioFormat;
+    
+    audioFormat.mSampleRate			= 8000.0;
+    audioFormat.mFormatID			= kAudioFormatULaw;
+    audioFormat.mFormatFlags        = kAudioFormatFlagIsFloat | kAudioFormatFlagIsPacked;
+    audioFormat.mBytesPerPacket		= 1;
+    audioFormat.mFramesPerPacket	= 1;
+    audioFormat.mBytesPerFrame		= 1;
+    audioFormat.mChannelsPerFrame	= 1;
+    audioFormat.mBitsPerChannel		= 16;
+    audioFormat.mReserved			= 0;
+    
+    AudioQueueNewOutput(&audioFormat,
+                        outputCallback,
+                        self,
+                        NULL,NULL,0,
+                        &audioQueueObject);
+
+    AudioQueueBufferRef buffers[3];
+    
+    UInt32 numPacketsToRead = 160;
+    UInt32 bufferByteSize = numPacketsToRead * audioFormat.mBytesPerPacket;
+    
+    int bufferIndex;
+    for (bufferIndex = 0; bufferIndex < 3; bufferIndex++){
+        AudioQueueAllocateBuffer(audioQueueObject,
+                                 bufferByteSize,
+                                 &buffers[bufferIndex]);
+        outputCallback(self, audioQueueObject, buffers[bufferIndex]);
+    }    
+}
+
 -(void)start
 {
-    //nothing todo
+    [self prepareAudioQueue];
+    
+    AudioQueueStart(audioQueueObject, NULL);
 }
 
 -(void)stop
 {
-    //nothing todo        
+    AudioQueueStop(audioQueueObject, YES);
+    AudioQueueDispose(audioQueueObject, YES);
 }
 
 @end

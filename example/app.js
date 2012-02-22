@@ -19,7 +19,7 @@ var button1 = Titanium.UI.createButton({
 });
 button1.addEventListener('click', function(e) { 
     Titanium.API.info("You clicked the start button");
-    voip.start("192.168.0.4", 12345, 54321);
+    voip.start("192.168.0.3", 12345, 54321);
 });
 window.add(button1);
 

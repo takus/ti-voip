@@ -102,13 +102,13 @@ static void inputCallback(void *                               inUserData,
                        &audioQueueObject);
     
     startingPacketCount = 0;
-    AudioQueueBufferRef buffers[16];
+    AudioQueueBufferRef buffers[3];
     
     numPacketsToWrite = 160;
     UInt32 bufferByteSize = numPacketsToWrite * audioFormat.mBytesPerPacket;
     
     int bufferIndex;
-    for(bufferIndex = 0; bufferIndex < 16; bufferIndex++){
+    for(bufferIndex = 0; bufferIndex < 3; bufferIndex++){
         AudioQueueAllocateBuffer(audioQueueObject,
                                  bufferByteSize,
                                  &buffers[bufferIndex]);

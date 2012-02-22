@@ -7,11 +7,16 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 #import "GCDAsyncUdpSocket.h"
 
 @interface VoiceOutput : NSObject
 {
+    AudioQueueRef audioQueueObject;
+    
+    NSMutableArray *queue;
+    
     GCDAsyncUdpSocket *socket;
     long tag;
 }
@@ -19,6 +24,10 @@
 -(void)bind:(NSInteger)port;
 -(void)start;
 -(void)stop;
+
+-(void)prepareAudioQueue;
+
+@property (retain) NSMutableArray *queue;
 
 @property (retain) GCDAsyncUdpSocket *socket;
 @property long tag;
