@@ -60,9 +60,7 @@
 }
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data fromAddress:(NSData *)address withFilterContext:(id)filterContext
-{
-    NSLog(@" didReceiveData %d", [self.queue count]);
-    
+{    
     // write raw data to queue
     id storeData = [[NSData alloc] initWithData:data];
     [self.queue addObject:storeData];
@@ -75,22 +73,20 @@ static void outputCallback(void *                  inUserData,
                            AudioQueueBufferRef     inBuffer)
 {
     VoiceOutput *output = (VoiceOutput*)inUserData;
-    NSLog(@" outputCallback %d", [output.queue count]);
+    memset(inBuffer->mAudioData, 0, 160);    
     
     int sleep = 0;
-    while ([output.queue count] == 0)
+    if ([output.queue count] == 0)
     {
-        [NSThread sleepForTimeInterval:0.1];
-        sleep++;
-        NSLog(@" sleep %f times", sleep * 0.1);
+        inBuffer->mAudioDataByteSize = 160;
+        AudioQueueEnqueueBuffer(inAQ, inBuffer, 0, NULL);
+        return;
     }
     
     // copy first element of buffer to inBuffer
-    NSData *data = (NSData *)[output.queue objectAtIndex:0];
-    // TODO memcpy is not working correctly?
-    memcpy(inBuffer->mAudioData, data, [data length]);
+    NSData *data = (NSData *)[output.queue objectAtIndex:0];  
+    memcpy(inBuffer->mAudioData, [data bytes], [data length]);
     [output.queue removeObjectAtIndex:0];
-    
     inBuffer->mAudioDataByteSize = [data length];
     
     // enqueue inBuffer
@@ -99,13 +95,13 @@ static void outputCallback(void *                  inUserData,
 
 -(void)prepareAudioQueue{
     AudioStreamBasicDescription audioFormat;
-    
+    memset(&audioFormat, 0, sizeof(audioFormat));
     audioFormat.mSampleRate			= 8000.0;
-    audioFormat.mFormatID			= kAudioFormatULaw;
-    audioFormat.mFormatFlags        = kAudioFormatFlagIsFloat | kAudioFormatFlagIsPacked;
-    audioFormat.mBytesPerPacket		= 1;
+    audioFormat.mFormatID			= kAudioFormatLinearPCM;
+    audioFormat.mFormatFlags        = kLinearPCMFormatFlagIsSignedInteger | kLinearPCMFormatFlagIsPacked;
+    audioFormat.mBytesPerPacket		= 2;
     audioFormat.mFramesPerPacket	= 1;
-    audioFormat.mBytesPerFrame		= 1;
+    audioFormat.mBytesPerFrame		= 2;
     audioFormat.mChannelsPerFrame	= 1;
     audioFormat.mBitsPerChannel		= 16;
     audioFormat.mReserved			= 0;
@@ -118,7 +114,7 @@ static void outputCallback(void *                  inUserData,
 
     AudioQueueBufferRef buffers[3];
     
-    UInt32 numPacketsToRead = 160;
+    UInt32 numPacketsToRead = 80;
     UInt32 bufferByteSize = numPacketsToRead * audioFormat.mBytesPerPacket;
     
     int bufferIndex;
