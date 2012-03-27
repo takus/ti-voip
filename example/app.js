@@ -5,6 +5,10 @@
 
 var voip_module = require('me.takus.ti.voip');
 
+var send_ip   = '127.0.0.1';
+var send_port = '12345';
+var recv_port = '54321'; 
+
 var window = Ti.UI.createWindow({
 	backgroundColor:'white'
 });
@@ -19,7 +23,7 @@ var button1 = Titanium.UI.createButton({
 });
 button1.addEventListener('click', function(e) { 
     Titanium.API.info("You clicked the start button");
-    voip.start("192.168.0.3", 12345, 54321);
+    voip.start(send_ip, send_port, recv_port);
 });
 window.add(button1);
 
